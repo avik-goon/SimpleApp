@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_app/components/Auth/login.dart';
+import 'package:simple_app/components/Auth/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: const Text('Simple Application'),
           ),
           body: const TabBarView(
-            children: [Login(), Text("data")],
+            children: [Login(), Register()],
           )),
     );
   }

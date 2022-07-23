@@ -1,10 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:simple_app/components/Auth/button.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatelessWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +17,26 @@ class Login extends StatelessWidget {
                 TextField(
                   autocorrect: false,
                   decoration: InputDecoration(
-                      hintText: 'Enter user name',
+                      hintText: 'Enter Fullname',
                       prefixIcon: Icon(Icons.account_box_outlined)),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Mobile Number',
+                      prefixIcon: Icon(Icons.phone_android_outlined)),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  autocorrect: false,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Username',
+                      prefixIcon: Icon(Icons.account_box_sharp)),
                 ),
                 SizedBox(
                   height: 30,
@@ -34,7 +50,7 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Button(btnTxt: 'LogIn'),
+                Button(btnTxt: 'Register'),
               ],
             ),
           )
