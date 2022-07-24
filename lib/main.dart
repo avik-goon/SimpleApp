@@ -5,8 +5,11 @@ import 'package:simple_app/components/auth/login.dart';
 import 'package:simple_app/components/auth/register.dart';
 import 'package:simple_app/model/auth/login_model.dart';
 import 'package:simple_app/model/auth/signup_model.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -66,7 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Login(userLogin: userLogin),
               Register(
-                  addRegisteredUser: addRegisteredUser, userSignUp: userSignUp)
+                addRegisteredUser: addRegisteredUser,
+                userSignUpDetails: userSignUp,
+              )
             ],
           )),
     );

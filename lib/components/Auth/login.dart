@@ -16,48 +16,54 @@ class Login extends StatelessWidget {
     _loginEmail.text = userLogin.getEmail ?? '';
     _loginPassword.text = userLogin.getEmail ?? '';
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(28.0),
-            child: Column(
-              children: [
-                TextField(
-                  controller: _loginEmail,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                      hintText: 'Enter email address',
-                      prefixIcon: Icon(Icons.email_outlined)),
+      child: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(28.0),
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: _loginEmail,
+                      autocorrect: false,
+                      decoration: InputDecoration(
+                          hintText: 'Enter email address',
+                          prefixIcon: Icon(Icons.email_outlined)),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    TextField(
+                      autocorrect: false,
+                      controller: _loginPassword,
+                      decoration: InputDecoration(
+                          hintText: 'Enter Password',
+                          prefixIcon: Icon(Icons.lock)),
+                      obscureText: true,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Button(
+                        btnTxt: 'LogIn',
+                        btnHandler: () {
+                          if (_loginEmail.text.isNotEmpty &&
+                              _loginPassword.text.isNotEmpty) {
+                            userLogin.setEmail = _loginEmail.text;
+                            userLogin.setPassword = _loginPassword.text;
+                          } else {
+                            print("Fields are empty");
+                          }
+                        }),
+                  ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
-                TextField(
-                  autocorrect: false,
-                  controller: _loginPassword,
-                  decoration: InputDecoration(
-                      hintText: 'Enter Password', prefixIcon: Icon(Icons.lock)),
-                  obscureText: true,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Button(
-                    btnTxt: 'LogIn',
-                    btnHandler: () {
-                      if (_loginEmail.text.isNotEmpty &&
-                          _loginPassword.text.isNotEmpty) {
-                        userLogin.setEmail = _loginEmail.text;
-                        userLogin.setPassword = _loginPassword.text;
-                      } else {
-                        print("Fields are empty");
-                      }
-                    }),
-              ],
-            ),
-          )
-        ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
