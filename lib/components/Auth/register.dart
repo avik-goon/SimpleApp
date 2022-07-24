@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:simple_app/components/Auth/button.dart';
+import 'package:simple_app/components/auth/button.dart';
 
 class Register extends StatelessWidget {
   const Register({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class Register extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(28.0),
             child: Column(
-              children: const [
+              children: [
                 TextField(
                   autocorrect: false,
                   decoration: InputDecoration(
@@ -35,8 +37,8 @@ class Register extends StatelessWidget {
                 TextField(
                   autocorrect: false,
                   decoration: InputDecoration(
-                      hintText: 'Enter Username',
-                      prefixIcon: Icon(Icons.account_box_sharp)),
+                      hintText: 'Enter email address',
+                      prefixIcon: Icon(Icons.email_outlined)),
                 ),
                 SizedBox(
                   height: 30,
@@ -50,7 +52,7 @@ class Register extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Button(btnTxt: 'Register'),
+                Button(btnTxt: 'Register', btnHandler: () {}),
               ],
             ),
           )

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   final String btnTxt;
-
-  const Button({Key? key, required this.btnTxt}) : super(key: key);
+  final Function btnHandler;
+  const Button({Key? key, required this.btnTxt, required this.btnHandler})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class Button extends StatelessWidget {
       child: FractionallySizedBox(
         widthFactor: 0.7,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () => btnHandler(),
           child: Text(btnTxt),
         ),
       ),
