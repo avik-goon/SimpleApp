@@ -1,6 +1,8 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, unnecessary_null_comparison, await_only_futures
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:simple_app/components/auth/login.dart';
 import 'package:simple_app/components/auth/register.dart';
 import 'package:simple_app/model/auth/login_model.dart';
@@ -52,8 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void checkUserSession() {
+    if (FirebaseAuth.instance.currentUser?.uid == null) {
+      // signed in
+      print("user is not logged in");
+    } else {
+      print("user is logged in");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkUserSession();
     return DefaultTabController(
       length: 2,
       child: Scaffold(
