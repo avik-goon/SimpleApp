@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_app/components/auth/login.dart';
 import 'package:simple_app/components/auth/register.dart';
 import 'package:simple_app/model/auth/login_model.dart';
+import 'package:simple_app/model/auth/signup_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   UserAuthDetails userLogin = UserAuthDetails();
+  UserSignUp userSignUp = UserSignUp();
+  void addRegisteredUser(
+      {required String fname,
+      required String mNumber,
+      required String email,
+      required String password}) {
+    setState(() {
+      userSignUp.setFullname = fname;
+      userSignUp.setMobileNumber = mNumber;
+      userSignUp.setEmail = email;
+      userSignUp.setPassword = password;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -48,7 +63,11 @@ class _MyHomePageState extends State<MyHomePage> {
             title: const Text('Simple Application'),
           ),
           body: TabBarView(
-            children: [Login(userLogin: userLogin), Register()],
+            children: [
+              Login(userLogin: userLogin),
+              Register(
+                  addRegisteredUser: addRegisteredUser, userSignUp: userSignUp)
+            ],
           )),
     );
   }

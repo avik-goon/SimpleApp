@@ -2,12 +2,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_app/components/auth/button.dart';
+import 'package:simple_app/model/auth/signup_model.dart';
 
 class Register extends StatelessWidget {
-  const Register({Key? key}) : super(key: key);
-
+  final Function addRegisteredUser;
+  final UserSignUp userSignUp;
+  Register(
+      {Key? key, required this.addRegisteredUser, required this.userSignUp})
+      : super(key: key);
+  final TextEditingController _signupFullName = TextEditingController(text: '');
+  final TextEditingController _signupMobileNumber = TextEditingController();
+  final TextEditingController _signupEmail = TextEditingController(text: '');
+  final TextEditingController _signupPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    _signupFullName.text = userSignUp.geFullname ?? '';
+    _signupMobileNumber.text = userSignUp.getMobileNumber ?? '';
+    _signupEmail.text = userSignUp.getEmail ?? '';
+    _signupPassword.text = userSignUp.getEmail ?? '';
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -17,6 +29,7 @@ class Register extends StatelessWidget {
             child: Column(
               children: [
                 TextField(
+                  controller: _signupFullName,
                   autocorrect: false,
                   decoration: InputDecoration(
                       hintText: 'Enter Fullname',
@@ -26,6 +39,7 @@ class Register extends StatelessWidget {
                   height: 30,
                 ),
                 TextField(
+                  controller: _signupMobileNumber,
                   autocorrect: false,
                   decoration: InputDecoration(
                       hintText: 'Enter Mobile Number',
@@ -35,6 +49,7 @@ class Register extends StatelessWidget {
                   height: 30,
                 ),
                 TextField(
+                  controller: _signupEmail,
                   autocorrect: false,
                   decoration: InputDecoration(
                       hintText: 'Enter email address',
@@ -44,6 +59,7 @@ class Register extends StatelessWidget {
                   height: 30,
                 ),
                 TextField(
+                  controller: _signupPassword,
                   autocorrect: false,
                   decoration: InputDecoration(
                       hintText: 'Enter Password', prefixIcon: Icon(Icons.lock)),
@@ -52,7 +68,15 @@ class Register extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Button(btnTxt: 'Register', btnHandler: () {}),
+                Button(
+                    btnTxt: 'Register',
+                    btnHandler: () {
+                      addRegisteredUser(
+                          fname: _signupFullName.text,
+                          mNumber: _signupMobileNumber.text,
+                          email: _signupEmail.text,
+                          password: _signupPassword.text);
+                    }),
               ],
             ),
           )
