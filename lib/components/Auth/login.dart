@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_app/components/auth/button.dart';
 
 import '../../model/auth/login_model.dart';
+import '../../utils/login_user.dart';
 
 class Login extends StatelessWidget {
   final UserAuthDetails userLogin;
@@ -54,6 +55,8 @@ class Login extends StatelessWidget {
                               _loginPassword.text.isNotEmpty) {
                             userLogin.setEmail = _loginEmail.text;
                             userLogin.setPassword = _loginPassword.text;
+                            LoginUser(userLoginDetails: userLogin)
+                                .loginUserWithFirebase();
                           } else {
                             print("Fields are empty");
                           }

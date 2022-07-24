@@ -6,10 +6,11 @@ import 'package:simple_app/components/auth/register.dart';
 import 'package:simple_app/model/auth/login_model.dart';
 import 'package:simple_app/model/auth/signup_model.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -63,7 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 Tab(icon: Icon(Icons.app_registration_outlined)),
               ],
             ),
-            title: const Text('Simple Application'),
+            title: Center(
+              child: Text('Simple Application'),
+            ),
           ),
           body: TabBarView(
             children: [
