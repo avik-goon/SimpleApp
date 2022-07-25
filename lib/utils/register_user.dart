@@ -26,7 +26,7 @@ class RegisterUser {
         email: userSignUpDetails.getEmail,
         password: userSignUpDetails.getPassword,
       );
-      createToast(credential.user?.uid);
+      createToast('New user created $credential.user?.uid');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         createToast('The password provided is too weak.');
