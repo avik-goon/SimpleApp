@@ -56,7 +56,7 @@ class Login extends StatelessWidget {
                             userLogin.setEmail = _loginEmail.text;
                             userLogin.setPassword = _loginPassword.text;
                             LoginUser(userLoginDetails: userLogin)
-                                .loginUserWithFirebase();
+                                .loginUserWithFirebase(context);
                           } else {
                             print("Fields are empty");
                           }

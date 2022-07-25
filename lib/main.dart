@@ -8,12 +8,15 @@ import 'package:simple_app/components/auth/register.dart';
 import 'package:simple_app/model/auth/login_model.dart';
 import 'package:simple_app/model/auth/signup_model.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:simple_app/screens/dashboard.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(FirebaseAuth.instance.currentUser?.uid == null
+      ? const MyApp()
+      : const Dashboard());
 }
 
 class MyApp extends StatelessWidget {
@@ -65,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    checkUserSession();
+    // checkUserSession();
     return DefaultTabController(
       length: 2,
       child: Scaffold(
