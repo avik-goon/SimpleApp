@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables, void_checks, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:simple_app/components/auth/button.dart';
 
 import '../../model/auth/login_model.dart';
 import '../../utils/login_user.dart';
+import 'button.dart';
 
 class Login extends StatelessWidget {
   final UserAuthDetails userLogin;

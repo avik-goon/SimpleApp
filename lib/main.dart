@@ -2,13 +2,13 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:simple_app/components/auth/login.dart';
-import 'package:simple_app/components/auth/register.dart';
+
 import 'package:simple_app/model/auth/login_model.dart';
 import 'package:simple_app/model/auth/signup_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:simple_app/screens/dashboard.dart';
+import 'components/Auth/login.dart';
+import 'components/Auth/register.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

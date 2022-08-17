@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:simple_app/components/auth/button.dart';
+
 import 'package:simple_app/model/auth/signup_model.dart';
 import 'package:simple_app/utils/register_user.dart';
+
+import 'button.dart';
 
 class Register extends StatelessWidget {
   final Function addRegisteredUser;
